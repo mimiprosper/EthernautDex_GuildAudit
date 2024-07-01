@@ -1,6 +1,6 @@
 # PoC Dex
 ## Overview:
-An attacker can exploit the Dex contract by performing a series of swaps to drain the liquidity. 
+An attacker can exploit the Dex contract by performing a series of swaps to drain the liquidity of one of the tokens, token1 or token2. 
 
 ## Actors:
 ### Attacker - The attacker make some series of swaps to the DEX to drain the liquidity
@@ -30,6 +30,40 @@ function test_multiple_swaps() public {
     }
 ```
 
+# PoC DexTow
+## Overview:
+An attacker can exploit the Dex contract by performing a series of swaps to drain the liquidity of the two token, token1 & token2. 
+
+## Actors:
+### Attacker - The attacker make some series of swaps to the DEX to drain the liquidity of the two tokens
+### Protocol - The protocol is a DEX that allows two different types of token to be swapped.
+
+### Test Case:
+
+```
+function setUp() public {
+        vm.startPrank(owner);
+        dex = new DexTwo(owner);
+
+        token1 = new SwappableTokenTwo(address(dex), "Token1", "TK1", 110);
+        token2 = new SwappableTokenTwo(address(dex), "Token2", "TK2", 110);
+
+        dex.setTokens(address(token1), address(token2));
+        console.log("Owner Token1 Balance before transfer:", token1.balanceOf(owner));
+
+        token1.approve(address(dex), 100);
+        token2.approve(address(dex), 100);
+
+        dex.add_liquidity(address(token1), 100);
+        dex.add_liquidity(address(token2), 100);
+        console.log("Owner Token1 Balance After transfer:", token1.balanceOf(owner));
+
+        // Deploy FakeToken
+        fakeToken = new FakeToken(owner, "fakeToken", "MTK", 500);
+        fakeToken.transfer(attacker, 400);
+    }
+
+```
 
 ## Foundry
 
