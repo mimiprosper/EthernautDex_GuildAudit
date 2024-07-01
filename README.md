@@ -15,7 +15,6 @@ function test_multiple_swaps() public {
         token2.approve(address(dex), 100);
 
         uint256 token1Expected = token1.balanceOf(address(dex));
-        // uint256 token2Expected = token2.balanceOf(address(dex));
         dex.swap(address(token1), address(token2), 10);
         dex.swap(address(token2), address(token1), 20);
         dex.swap(address(token1), address(token2), 24);
@@ -24,8 +23,6 @@ function test_multiple_swaps() public {
         dex.swap(address(token2), address(token1), 45);
 
         uint256 token1Balance = token1.balanceOf(attacker);
-        // uint256 token2Balance = token2.balanceOf(attacker);
-        // uint256 token2ExpectedAfter = token2.balanceOf(address(dex));
         uint256 token1ExpectedAfter = token1.balanceOf(address(dex));
 
         assert(token1Balance == token1Expected + 10);
