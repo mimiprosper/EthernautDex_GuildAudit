@@ -30,7 +30,7 @@ function test_multiple_swaps() public {
     }
 ```
 
-# PoC DexTow
+# PoC DexTwo
 ## Overview:
 An attacker can exploit the Dex contract by performing a series of swaps to drain the liquidity of the two token, token1 & token2. 
 
