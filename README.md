@@ -3,8 +3,8 @@
 An attacker can exploit the Dex contract by performing a series of swaps to drain the liquidity. 
 
 ## Actors:
-Attacker - The attacker make some series of swaps to the DEX to drain the liquidity
-Protocol - The protocol is a DEX the allows two different types of token to be swapped, token one & token two.
+### Attacker - The attacker make some series of swaps to the DEX to drain the liquidity
+### Protocol - The protocol is a DEX the allows two different types of token to be swapped, token one & token two.
 
 ### Test Case:
 
