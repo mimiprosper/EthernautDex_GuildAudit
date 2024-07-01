@@ -7,8 +7,7 @@ Attacker - The attacker make some series of swaps to the DEX to drain the liquid
 Protocol - The protocol is a DEX the allows two different types of token to be swapped, token one & token two.
 
 ### Test Case:
-`
-function test_multiple_swaps() public {
+`function test_multiple_swaps() public {
         vm.startPrank(attacker);
         token1.approve(address(dex), 100);
         token2.approve(address(dex), 100);
@@ -30,8 +29,6 @@ function test_multiple_swaps() public {
         assert(token1Balance == token1Expected + 10);
         assertEq(token1ExpectedAfter, 0);
     }
-
-
 `
 
 
